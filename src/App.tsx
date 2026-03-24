@@ -15,24 +15,24 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function App() {
   useEffect(() => {
-    // GSAP: Smooth scroll anchoring
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-      anchor.addEventListener('click', (e) => {
+    const handleAnchorClick = (e: Event) => {
+      const anchor = (e.target as Element).closest('a[href^="#"]');
+      if (!anchor) return;
+      const href = anchor.getAttribute('href');
+      if (!href) return;
+      const target = document.querySelector(href);
+      if (target) {
         e.preventDefault();
-        const href = (anchor as HTMLAnchorElement).getAttribute('href');
-        if (!href) return;
-        const target = document.querySelector(href);
-        if (target) {
-          gsap.to(window, {
-            duration: 0.8,
-            scrollTo: { y: target as Element, offsetY: 80 },
-            ease: 'power3.inOut',
-          });
-        }
-      });
-    });
+        const navHeight = 80;
+        const y = target.getBoundingClientRect().top + window.scrollY - navHeight;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    };
+
+    document.addEventListener('click', handleAnchorClick);
 
     return () => {
+      document.removeEventListener('click', handleAnchorClick);
       ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, []);
