@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Money02Icon, Shield01Icon, ChartLineData01Icon, Note01Icon, Leaf01Icon, Clock01Icon } from 'hugeicons-react';
 import { fadeUp, staggerContainer, staggerItem } from '../utils/animations';
 
@@ -62,10 +63,10 @@ export default function Benefits() {
             </p>
           </div>
           <div className="flex-shrink-0 pb-2">
-            <a href="#sign-up" className="bg-slate-950 text-white px-8 py-4 rounded-full font-semibold group flex items-center gap-2 hover:bg-slate-900 transition-all duration-300 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.3)] hover:scale-[1.02] active:scale-[0.98]">
+            <Link to="/register" className="bg-slate-950 text-white px-8 py-4 rounded-full font-semibold group flex items-center gap-2 hover:bg-slate-900 transition-all duration-300 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.3)] hover:scale-[1.02] active:scale-[0.98]">
               Register now
               <span className="group-hover:translate-x-1 transition-transform">→</span>
-            </a>
+            </Link>
           </div>
         </motion.div>
 

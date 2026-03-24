@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ArrowRight01Icon, SolarPanel02Icon, Home01Icon, Money01Icon, Shield01Icon } from 'hugeicons-react';
 import { ease } from '../utils/animations';
@@ -99,13 +100,13 @@ export default function Hero() {
               transition={{ delay: 0.9, duration: 0.7, ease }}
               className="flex flex-col sm:flex-row items-start gap-4"
             >
-              <a
-                href="#sign-up"
+              <Link
+                to="/register"
                 className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-slate-950 font-semibold text-[15px] rounded-full hover:bg-slate-100 hover:scale-[1.02] transition-all duration-300 shadow-[0_0_40px_rgba(255,255,255,0.1)] active:scale-[0.97] w-full sm:w-auto"
               >
                 Register Your Roof
                 <ArrowRight01Icon className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-300" />
-              </a>
+              </Link>
               <a
                 href="#how-it-works"
                 className="group inline-flex items-center justify-center gap-2 px-8 py-4 text-white/80 border border-white/15 rounded-full font-medium text-[15px] hover:bg-white/5 hover:text-white transition-all duration-300 w-full sm:w-auto backdrop-blur-sm"

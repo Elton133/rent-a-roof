@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import {
   Menu01Icon,
@@ -113,19 +114,20 @@ export default function Navbar() {
                 {link.label}
               </motion.a>
             ))}
-            <motion.a
-              href="#sign-up"
-              className={`ml-3 px-5 py-2 font-semibold text-[13px] rounded-full transition-all duration-300 hover:scale-[1.02] active:scale-[0.97] ${
-                scrolled
-                  ? 'bg-slate-950 text-white hover:bg-slate-900 hover:shadow-lg hover:shadow-slate-900/20'
-                  : 'bg-white text-slate-950 hover:bg-slate-50 shadow-[0_0_20px_rgba(255,255,255,0.1)]'
-              }`}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.8, duration: 0.5, ease }}
-            >
-              Get Started
-            </motion.a>
+            <Link to="/register">
+              <motion.span
+                className={`ml-3 px-5 py-2 font-semibold text-[13px] rounded-full transition-all duration-300 hover:scale-[1.02] active:scale-[0.97] inline-block ${
+                  scrolled
+                    ? 'bg-slate-950 text-white hover:bg-slate-900 hover:shadow-lg hover:shadow-slate-900/20'
+                    : 'bg-white text-slate-950 hover:bg-slate-50 shadow-[0_0_20px_rgba(255,255,255,0.1)]'
+                }`}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.8, duration: 0.5, ease }}
+              >
+                Get Started
+              </motion.span>
+            </Link>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -244,15 +246,16 @@ export default function Navbar() {
                 ))}
 
                 {/* CTA */}
-                <motion.a
-                  variants={linkItem}
-                  href="#sign-up"
-                  className="mt-6 flex items-center justify-center gap-2.5 px-6 py-4 bg-white text-slate-950 font-semibold text-[15px] rounded-2xl hover:bg-slate-100 transition-colors active:scale-[0.98]"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  Register Your Roof
-                  <ArrowRight01Icon className="w-4 h-4" />
-                </motion.a>
+                <motion.div variants={linkItem}>
+                  <Link
+                    to="/register"
+                    className="mt-6 flex items-center justify-center gap-2.5 px-6 py-4 bg-white text-slate-950 font-semibold text-[15px] rounded-2xl hover:bg-slate-100 transition-colors active:scale-[0.98]"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    Register Your Roof
+                    <ArrowRight01Icon className="w-4 h-4" />
+                  </Link>
+                </motion.div>
 
                 {/* Quick Info Cards */}
                 <motion.div variants={linkItem} className="mt-8 grid grid-cols-2 gap-3">
